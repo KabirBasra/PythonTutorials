@@ -83,11 +83,56 @@ public class algorithms {
     }
 
 
+// Palindrome (text)
+// | Checking whetehr tetxt strings are palindromes
+// | Utiliisng recursion and performs string validation
+
+    public boolean palindrome(String pal, int first, int last) {
+        if (first >= last) {
+            return true;
+        }
+        char asciiCheck = pal.charAt(first);
+        if ((pal.charAt(first) < 'a')||(pal.charAt(first) > 'z')) {
+            return (palindrome(pal, first+1, last));
+        } 
+        if ((pal.charAt(last) < 'a')||(pal.charAt(last) > 'z')) {
+            return (palindrome(pal, first, last-1));
+        }
+        if (pal.charAt(first)==pal.charAt(last)) {
+            return (palindrome(pal, first+1, last-1));
+        } else {
+            return false;
+        }
+    }
+
+
+// Fibonacci Sequence
+// |
+// |
+
+    public int fib(int num1, int num2, int count) {
+        if (count <= 0) {
+            return num1;
+        } else {
+            int temp = num1;
+            num1 = num2;
+            num2 = num2 + temp;
+            count = count - 1;
+            return fib(num1,num2,count);
+        }
+    }
+
+
+
+
+// MAIN //
     public static void main(String[] args) {
         algorithms sorting = new algorithms();
         sorting.mergeSort(data,0,dlength-1);
         System.out.print("After: ");
         System.out.println(Arrays.toString(data));
+        String tempWord = "A man, a plan, a canal - Panama";
+        System.out.println(sorting.palindrome(tempWord.toLowerCase().trim(), 0, tempWord.length()-1));
+        System.out.println(sorting.fib(0, 1, 6));
     }
-    
 }
